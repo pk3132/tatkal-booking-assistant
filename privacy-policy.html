@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Tatkal Booking Assistant</title>
+  <style>
+    :root { --bg: #f4f6fb; --card: #fff; --ink: #16202e; --muted: #5b6878; --line: #dfe5ee; --brand: #12508f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #11161d; --card: #1a2029; --ink: #e8edf5; --muted: #9dabbd; --line: #2a323e; --brand: #60a5fa; }
+    }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, "Segoe UI", Roboto, Arial, sans-serif; }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { font-size: 28px; margin: 0 0 4px; }
+    h2 { font-size: 19px; margin: 32px 0 8px; color: var(--brand); }
+    .meta { color: var(--muted); margin: 0 0 24px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-weight: 600; }
+    code { font-size: 14px; }
+    ul { padding-left: 22px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 19 September 2026</p>
+
+  <div class="card">
+    <p><b>In short:</b> everything you enter stays on your own computer. The extension has no server, sends
+    nothing to its developer or to anyone else, and contains no analytics, advertising or tracking. It only
+    ever talks to <code>www.irctc.co.in</code>, to do what you asked on that site.</p>
+  </div>
+
+  <h2>1. What the extension stores</h2>
+  <p>All of the following is kept in Chrome's local extension storage (<code>chrome.storage.local</code>) on
+  your device. It is not synced to your Google account and not uploaded anywhere.</p>
+  <table>
+    <tr><th>Data</th><th>Why</th></tr>
+    <tr><td>Passenger profiles: name, age, gender, berth and food preference, and optionally an ID card type and number</td>
+        <td>To fill IRCTC's passenger form for you</td></tr>
+    <tr><td>Journey details: from/to stations, date, class, quota, number of passengers, train number, name and departure time, and the availability you will accept</td>
+        <td>To fill IRCTC's search form and pick the right train and date</td></tr>
+    <tr><td>Your IRCTC User ID (never your password)</td>
+        <td>To type it into IRCTC's login form when you ask</td></tr>
+    <tr><td>Settings: booking-page preferences (payment mode, UPI app, insurance and similar), reminders, Auto-start on/off</td>
+        <td>To apply your choices on the booking pages and schedule reminders</td></tr>
+  </table>
+  <p>While a booking run is in progress, the journey and passenger details for that run are also held in the
+  IRCTC tab's own session storage, so the run can resume if the page reloads. That copy is removed when the run
+  ends and disappears when the tab is closed.</p>
+
+  <h2>2. What the extension never collects</h2>
+  <ul>
+    <li>Your IRCTC password &mdash; there is no field for it, and the password box on IRCTC is never read or written.</li>
+    <li>CAPTCHA answers and OTPs &mdash; you type these yourself; the extension never reads or fills them.</li>
+    <li>Payment details &mdash; no UPI ID, card number, CVV, UPI PIN or bank credential is ever read, typed or stored.</li>
+    <li>Browsing history, or anything from any website other than <code>www.irctc.co.in</code>.</li>
+  </ul>
+
+  <h2>3. Where data goes</h2>
+  <p><b>To the developer or any third party: nowhere.</b> The extension has no server and makes no network
+  requests of its own, with one exception: when Auto-start is on, it makes a single request to
+  <code>www.irctc.co.in</code> to read IRCTC's clock, so that it starts on IRCTC's time rather than your PC's.</p>
+  <p>The details the extension fills into IRCTC's forms reach IRCTC exactly as if you had typed them yourself,
+  as part of your own booking. How IRCTC handles them is covered by IRCTC's own privacy policy.</p>
+
+  <h2>4. Permissions</h2>
+  <table>
+    <tr><th>Permission</th><th>Used for</th></tr>
+    <tr><td><code>storage</code></td><td>Keeping your profiles, journey and settings on your device.</td></tr>
+    <tr><td><code>alarms</code></td><td>The reminder before the Tatkal window and the Auto-start timing.</td></tr>
+    <tr><td><code>notifications</code></td><td>Showing those reminders. Switch them off in Settings.</td></tr>
+    <tr><td><code>scripting</code></td><td>Loading the helper into an IRCTC tab that was already open before the extension started.</td></tr>
+    <tr><td>Access to <code>https://www.irctc.co.in/*</code></td><td>The only site the extension can read or act on.</td></tr>
+  </table>
+
+  <h2>5. Keeping or deleting your data</h2>
+  <p>Your data stays until you remove it. <b>Settings &rarr; Delete all stored data</b> erases everything the extension
+  stored, and uninstalling the extension removes it too. <b>Export profiles (JSON)</b> in Settings saves your passenger
+  profiles to a file on your own computer, and only when you click it.</p>
+
+  <h2>6. Voluntary support</h2>
+  <p>The extension shows a UPI QR code for anyone who wants to support its development. Paying is entirely
+  optional and happens in your own UPI app. The extension does not process, see or store any payment
+  information, and nothing in it changes whether or not you pay.</p>
+
+  <h2>7. Changes to this policy</h2>
+  <p>If the extension ever starts handling data differently, this page will be updated first and the date
+  at the top will change.</p>
+
+  <h2>8. Developer and contact</h2>
+  <p>Developed by <b>Prakash Patel</b>. Questions about this policy: <a href="mailto:patelerprakash@gmail.com"><b>patelerprakash@gmail.com</b></a></p>
+
+  <p class="meta" style="margin-top:32px">Tatkal Booking Assistant is an independent tool. It is not
+  affiliated with, endorsed by or connected to IRCTC or Indian Railways.</p>
+</main>
+</body>
+</html>
