@@ -25,12 +25,11 @@
 <body>
 <main>
   <h1>Privacy Policy</h1>
-  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 19 September 2026</p>
+  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 16 November 2026</p>
 
   <div class="card">
-    <p><b>In short:</b> everything you enter stays on your own computer. The extension has no server, sends
-    nothing to its developer or to anyone else, and contains no analytics, advertising or tracking. It only
-    ever talks to <code>www.irctc.co.in</code>, to do what you asked on that site.</p>
+    <p><b>In short:</b> booking details are kept on your device and filled into IRCTC. Anonymous booking
+    analytics are on by default. You can turn them off in Settings.</p>
   </div>
 
   <h2>1. What the extension stores</h2>
@@ -42,10 +41,16 @@
         <td>To fill IRCTC's passenger form for you</td></tr>
     <tr><td>Journey details: from/to stations, date, class, quota, number of passengers, train number, name and departure time, and the availability you will accept</td>
         <td>To fill IRCTC's search form and pick the right train and date</td></tr>
-    <tr><td>Your IRCTC User ID (never your password)</td>
+    <tr><td>Your IRCTC User ID</td>
         <td>To type it into IRCTC's login form when you ask</td></tr>
-    <tr><td>Settings: booking-page preferences (payment mode, UPI app, insurance and similar), reminders, Auto-start on/off</td>
+    <tr><td>Your IRCTC password, <b>only if you choose to save it</b> in Settings. It is stored without
+        encryption on your computer, kept apart from your other settings so it is never exported, and can be
+        removed with "Forget saved password"</td>
+        <td>To type it into IRCTC's own login box, so you only have to type the CAPTCHA</td></tr>
+    <tr><td>Settings: booking-page preferences (payment mode, UPI app, insurance and similar), reminders, Auto-start on/off, which IRCTC site to use</td>
         <td>To apply your choices on the booking pages and schedule reminders</td></tr>
+    <tr><td>IRCTC's public station list, and the trains IRCTC listed for routes you searched (train number, name and departure time only)</td>
+        <td>To suggest stations and trains as you type. This is public railway information, not data about you</td></tr>
   </table>
   <p>While a booking run is in progress, the journey and passenger details for that run are also held in the
   IRCTC tab's own session storage, so the run can resume if the page reloads. That copy is removed when the run
@@ -53,16 +58,51 @@
 
   <h2>2. What the extension never collects</h2>
   <ul>
-    <li>Your IRCTC password &mdash; there is no field for it, and the password box on IRCTC is never read or written.</li>
+    <li>Your IRCTC password, unless you save it yourself &mdash; the password box on IRCTC is never read, and
+    is written only with a password you saved, only on IRCTC's login form.</li>
     <li>CAPTCHA answers and OTPs &mdash; you type these yourself; the extension never reads or fills them.</li>
     <li>Payment details &mdash; no UPI ID, card number, CVV, UPI PIN or bank credential is ever read, typed or stored.</li>
     <li>Browsing history, or anything from any website other than <code>www.irctc.co.in</code>.</li>
   </ul>
 
   <h2>3. Where data goes</h2>
-  <p><b>To the developer or any third party: nowhere.</b> The extension has no server and makes no network
-  requests of its own, with one exception: when Auto-start is on, it makes a single request to
-  <code>www.irctc.co.in</code> to read IRCTC's clock, so that it starts on IRCTC's time rather than your PC's.</p>
+  <p>When Auto-start is on, the extension checks IRCTC's clock to time the run.</p>
+  <p>Booking analytics are on by default. While they are on, the extension sends the following to the publisher's analytics
+  service, together with a random installation ID and the extension's version number:</p>
+  <ul>
+    <li>Once a day, that the extension ran that day.</li>
+    <li>When Auto Pilot starts: whether you or Auto-start started it, the booking window (8, 10 or 11 AM), the class code
+      (for example 3A or SL), the station codes of the two stations, the train number and the backup train number you set,
+      and whether the run started outside the booking window (a practice run).</li>
+    <li>While it runs: the furthest step reached (search, train list, passengers, review or payment) and the seconds taken to reach
+      it; the availability shown for your train (AVAILABLE, RAC, WL or REGRET with its number); why the train list did not lead to
+      booking, as one fixed label (train not in the list, class not offered, no seat, not open yet, wrong date, Book Now failed);
+      and whether you pressed Stop.</li>
+    <li>At IRCTC's payment page: a random attempt ID, the payment mode you chose in Settings (UPI or cards) and the payment app's
+      name (for example PhonePe). Never a UPI ID, card or bank detail.</li>
+    <li>The result, if the page shows one: confirmed (with the ticket's station codes, train number and class), booked on
+      waitlist/RAC, failed, or left (you went back to search or started a new run). If no result was shown, the popup may ask you
+      once, "Ticket mila?"; your one-click answer is sent the same way.</li>
+  </ul>
+  <p>The journey date is not sent. Analytics excludes PNR, passenger details, credentials and payment details. The service records
+  the date in India and the time each event arrives, and counts unique installations per day. The publisher's report contains
+  totals per day, per minute around each booking window, per route, train and class, per step, per payment app and per version.
+  Turning analytics off stops future reporting and removes the local analytics ID.</p>
+  <p>If you uninstall the extension, Chrome may open the publisher's short feedback page. Only the extension version is in its
+  link. If you choose a reason there (and optionally write a note of up to 300 characters), that is sent without any installation ID.</p>
+  <p>Five minutes before your booking window the extension checks, on your computer only, whether your journey, passengers and
+  payment app are set and whether an open IRCTC tab is logged in, and shows a reminder if something is missing. The last
+  availability seen for your train is kept in your browser to suggest a backup train.</p>
+  <p>After a confirmed booking the extension counts it in your browser ("tickets confirmed with this extension") and may show a
+  thank-you card with the publisher's donation QR code on the ticket page. The count stays on your computer and is never sent.
+  Donating is optional and happens in your own UPI app.</p>
+  <p>About once an hour the extension asks the publisher's server for the oldest version it still supports, and
+  asks Chrome for updates. That request sends nothing about you or your bookings; only a version number comes back.
+  If your version is older, Auto Pilot and Auto-start wait until you update, and a downloaded update is applied
+  when no booking is running.</p>
+  <p>To suggest trains, when you pick both stations of a route the extension opens IRCTC's train search in a
+  background tab, searches that route once, notes the trains IRCTC shows, and closes the tab. This is the same
+  search you could make yourself; it is made without logging in and sends IRCTC only the two stations and a date.</p>
   <p>The details the extension fills into IRCTC's forms reach IRCTC exactly as if you had typed them yourself,
   as part of your own booking. How IRCTC handles them is covered by IRCTC's own privacy policy.</p>
 
@@ -70,9 +110,9 @@
   <table>
     <tr><th>Permission</th><th>Used for</th></tr>
     <tr><td><code>storage</code></td><td>Keeping your profiles, journey and settings on your device.</td></tr>
-    <tr><td><code>alarms</code></td><td>The reminder before the Tatkal window and the Auto-start timing.</td></tr>
+    <tr><td><code>alarms</code></td><td>The reminder before booking opens and the Auto-start timing.</td></tr>
     <tr><td><code>notifications</code></td><td>Showing those reminders. Switch them off in Settings.</td></tr>
-    <tr><td><code>scripting</code></td><td>Loading the helper into an IRCTC tab that was already open before the extension started.</td></tr>
+    <tr><td><code>scripting</code></td><td>Loading the helper into an IRCTC tab that was already open before the extension started, and reading IRCTC's station list from such a tab.</td></tr>
     <tr><td>Access to <code>https://www.irctc.co.in/*</code></td><td>The only site the extension can read or act on.</td></tr>
   </table>
 
