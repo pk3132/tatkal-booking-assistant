@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tatkal Booking Assistant - Feedback</title>
+<style>
+  :root { --bg: #f6f7fb; --card: #fff; --ink: #1f2937; --muted: #6b7280; --line: #e5e7eb; --accent: #0b3b6b; --ok: #15803d; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111827; --card: #1f2937; --ink: #f3f4f6; --muted: #9ca3af; --line: #374151; --accent: #93c5fd; --ok: #4ade80; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 520px; margin: 0 auto; padding: 32px 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  p { margin: 0 0 14px; color: var(--muted); }
+  label.reason { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line);
+    border-radius: 8px; margin-bottom: 8px; cursor: pointer; }
+  label.reason:has(input:checked) { border-color: var(--accent); }
+  textarea { width: 100%; min-height: 70px; margin: 6px 0 14px; padding: 8px; border: 1px solid var(--line);
+    border-radius: 8px; background: transparent; color: inherit; font: inherit; }
+  button { width: 100%; padding: 11px; border: 0; border-radius: 8px; background: var(--accent); color: var(--card);
+    font: inherit; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  .done { color: var(--ok); font-weight: 600; text-align: center; margin: 14px 0 0; }
+  small { display: block; margin-top: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <h1>Extension kyun hata rahe hain?</h1>
+    <p>Ek click mein bata dijiye - isse agla version behtar banega. Koi naam, email ya ID nahi liya jaata.</p>
+    <form id="f">
+      <label class="reason"><input type="radio" name="r" value="not_working"> Kaam nahi kar raha tha / atak jaata tha</label>
+      <label class="reason"><input type="radio" name="r" value="no_ticket"> Ticket confirm nahi hua</label>
+      <label class="reason"><input type="radio" name="r" value="hard_to_use"> Samajhna ya set karna mushkil tha</label>
+      <label class="reason"><input type="radio" name="r" value="trip_done"> Safar ho gaya, abhi zarurat nahi</label>
+      <label class="reason"><input type="radio" name="r" value="other_tool"> Koi doosra tool use kar raha hoon</label>
+      <label class="reason"><input type="radio" name="r" value="privacy"> Privacy / bharose ki chinta</label>
+      <label class="reason"><input type="radio" name="r" value="other"> Kuch aur</label>
+      <textarea id="note" maxlength="300" placeholder="Kuch aur batana chahein? (optional, 300 akshar tak - apna naam, number ya ID na likhein)"></textarea>
+      <button id="send" type="submit" disabled>Bhejein</button>
+      <p class="done" id="done" hidden>Shukriya! 🙏 Aapka safar mangalmay ho.</p>
+    </form>
+    <small>Tatkal Booking Assistant (unofficial, not affiliated with IRCTC).</small>
+  </div>
+</main>
+<script>
+  // Sends only the chosen reason, the optional note and the extension version from the link.
+  const ENDPOINT = 'https://iemqcodrzyvbxdaciwti.supabase.co/functions/v1/booking-analytics';
+  const form = document.getElementById('f');
+  const send = document.getElementById('send');
+  form.addEventListener('change', () => { send.disabled = !form.querySelector('input[name=r]:checked'); });
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const reason = (form.querySelector('input[name=r]:checked') || {}).value;
+    if (!reason) return;
+    send.disabled = true;
+    const v = new URLSearchParams(location.search).get('v') || '';
+    const body = JSON.stringify({
+      event: 'uninstall_feedback', reason,
+      note: document.getElementById('note').value.slice(0, 300),
+      appVersion: /^\d{1,4}(\.\d{1,5}){0,3}$/.test(v) ? v : undefined
+    });
+    // A plain text body needs no CORS preflight; the reply is not read.
+    try { await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body }); } catch (_) {}
+    form.querySelectorAll('input, textarea').forEach((el) => { el.disabled = true; });
+    send.hidden = true;
+    document.getElementById('done').hidden = false;
+  });
+</script>
+</body>
+</html>
