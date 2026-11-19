@@ -25,7 +25,7 @@
 <body>
 <main>
   <h1>Privacy Policy</h1>
-  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 16 November 2026</p>
+  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 19 November 2026</p>
 
   <div class="card">
     <p><b>In short:</b> booking details are kept on your device and filled into IRCTC. Anonymous booking
@@ -87,6 +87,9 @@
   <p>The journey date is not sent. Analytics excludes PNR, passenger details, credentials and payment details. The service records
   the date in India and the time each event arrives, and counts unique installations per day. The publisher's report contains
   totals per day, per minute around each booking window, per route, train and class, per step, per payment app and per version.
+  Login diagnostics include the date, extension version, Old/New site, HTTP status and error category
+  of matching authentication requests. Diagnostics exclude request URLs, headers, request bodies,
+  passwords and cookies. These records are sent to the publisher when analytics sharing is enabled.
   Turning analytics off stops future reporting and removes the local analytics ID.</p>
   <p>If you uninstall the extension, Chrome may open the publisher's short feedback page. Only the extension version is in its
   link. If you choose a reason there (and optionally write a note of up to 300 characters), that is sent without any installation ID.</p>
@@ -113,6 +116,7 @@
     <tr><td><code>alarms</code></td><td>The reminder before booking opens and the Auto-start timing.</td></tr>
     <tr><td><code>notifications</code></td><td>Showing those reminders. Switch them off in Settings.</td></tr>
     <tr><td><code>scripting</code></td><td>Loading the helper into an IRCTC tab that was already open before the extension started, and reading IRCTC's station list from such a tab.</td></tr>
+    <tr><td><code>webRequest</code></td><td>Seeing only the HTTP status (for example 403 or 429) of IRCTC's own sign-in requests, to tell when IRCTC rejects a login. Request URLs, headers, bodies, passwords and cookies are not read or stored.</td></tr>
     <tr><td>Access to <code>https://www.irctc.co.in/*</code></td><td>The only site the extension can read or act on.</td></tr>
   </table>
 
