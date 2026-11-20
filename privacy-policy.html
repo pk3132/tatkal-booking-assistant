@@ -25,7 +25,7 @@
 <body>
 <main>
   <h1>Privacy Policy</h1>
-  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 19 November 2026</p>
+  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 20 November 2026</p>
 
   <div class="card">
     <p><b>In short:</b> booking details are kept on your device and filled into IRCTC. Anonymous booking
@@ -75,12 +75,13 @@
       (for example 3A or SL), the station codes of the two stations, the train number and the backup train number you set,
       and whether the run started outside the booking window (a practice run).</li>
     <li>While it runs: the furthest step reached (search, train list, passengers, review or payment) and the seconds taken to reach
-      it; the availability shown for your train (AVAILABLE, RAC, WL or REGRET with its number); why the train list did not lead to
+      it; on the passenger and review pages, the seconds spent there and how many of them IRCTC's loading screen or a CAPTCHA
+      box was on screen; the availability shown for your train (AVAILABLE, RAC, WL or REGRET with its number); why the train list did not lead to
       booking, as one fixed label (train not in the list, class not offered, no seat, not open yet, wrong date, Book Now failed);
       and whether you pressed Stop.</li>
     <li>At IRCTC's payment page: a random attempt ID, the payment mode you chose in Settings (UPI or cards) and the payment app's
       name (for example PhonePe). Never a UPI ID, card or bank detail.</li>
-    <li>The result, if the page shows one: confirmed (with the ticket's station codes, train number and class), booked on
+    <li>The result, if a page shows one (the ticket page, or your Booked Ticket History on IRCTC, in any tab): confirmed (with the ticket's station codes, train number and class), booked on
       waitlist/RAC, failed, or left (you went back to search or started a new run). If no result was shown, the popup may ask you
       once, "Did you get your ticket?"; your one-click answer is sent the same way.</li>
   </ul>
@@ -96,6 +97,9 @@
   <p>Five minutes before your booking window the extension checks, on your computer only, whether your journey, passengers and
   payment app are set and whether an open IRCTC tab is logged in, and shows a reminder if something is missing. The last
   availability seen for your train is kept in your browser to suggest a backup train.</p>
+  <p>When you reach IRCTC's payment page, the train number and journey date of that attempt are kept in your browser for up
+  to 3 hours, so the result can be read when the ticket opens in another tab or in your Booked Ticket History. Only the matching
+  ticket's result is used; they are never sent, and no other ticket in your history is read or sent.</p>
   <p>After a confirmed booking the extension counts it in your browser ("tickets confirmed with this extension") and may show a
   thank-you card with the publisher's donation QR code on the ticket page. The count stays on your computer and is never sent.
   Donating is optional and happens in your own UPI app.</p>
