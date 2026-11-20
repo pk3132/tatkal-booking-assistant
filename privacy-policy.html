@@ -121,9 +121,11 @@
     <tr><td><code>notifications</code></td><td>Showing those reminders. Switch them off in Settings.</td></tr>
     <tr><td><code>scripting</code></td><td>Loading the helper into an IRCTC tab that was already open before the extension started, and reading IRCTC's station list from such a tab.</td></tr>
     <tr><td><code>webRequest</code></td><td>Seeing only the HTTP status (for example 403 or 429) of IRCTC's own sign-in requests, to tell when IRCTC rejects a login. Request URLs, headers, bodies, passwords and cookies are not read or stored.</td></tr>
-    <tr><td><code>browsingData</code> (optional, asked only when you press "Clear IRCTC cache")</td><td>Removing the files Chrome
-      saved for <code>www.irctc.co.in</code> (its cache), so IRCTC loads its newest pages. Only that site's cache is removed;
-      cookies, logins, history and other websites are not touched, and nothing is read or sent.</td></tr>
+    <tr><td><code>browsingData</code> (optional; Chrome asks for it only after you click "Allow it now", the cache switch or
+      "Clear IRCTC cache" in the popup)</td><td>Removing the files Chrome saved for <code>www.irctc.co.in</code> (its cache) each
+      time Auto Pilot or Auto-start starts, and when you press "Clear IRCTC cache", so IRCTC loads its newest pages. The switch
+      "Clear IRCTC cache when Auto Pilot starts" at the bottom of the popup is on by default and can be turned off. Only that
+      site's cache is removed; cookies, logins, history and other websites are not touched, and nothing is read or sent.</td></tr>
     <tr><td>Access to <code>https://www.irctc.co.in/*</code></td><td>The only site the extension can read or act on.</td></tr>
   </table>
 
