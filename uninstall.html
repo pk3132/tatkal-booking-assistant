@@ -35,11 +35,15 @@
     <form id="f">
       <label class="reason"><input type="radio" name="r" value="not_working"> It did not work or got stuck</label>
       <label class="reason"><input type="radio" name="r" value="stuck_search"> It got stuck at the search page</label>
+      <label class="reason"><input type="radio" name="r" value="stuck_train_list"> It got stuck at the train list / availability</label>
+      <label class="reason"><input type="radio" name="r" value="stuck_passenger"> It got stuck at the passenger page</label>
       <label class="reason"><input type="radio" name="r" value="stuck_payment"> It got stuck at the payment page</label>
       <label class="reason"><input type="radio" name="r" value="logged_out"> IRCTC logged me out or showed an error page</label>
       <label class="reason"><input type="radio" name="r" value="blocked"> IRCTC blocked my account or IP</label>
       <label class="reason"><input type="radio" name="r" value="too_slow"> It was too slow</label>
       <label class="reason"><input type="radio" name="r" value="no_ticket"> My ticket was not confirmed</label>
+      <label class="reason"><input type="radio" name="r" value="seats_gone"> Seats were gone / only waitlist by the time it reached booking</label>
+      <label class="reason"><input type="radio" name="r" value="payment_failed"> Payment failed or money was deducted without a ticket</label>
       <label class="reason"><input type="radio" name="r" value="hard_to_use"> It was hard to understand or set up</label>
       <label class="reason"><input type="radio" name="r" value="trip_done"> My trip is done, I do not need it now</label>
       <label class="reason"><input type="radio" name="r" value="other_tool"> I am using another tool</label>
