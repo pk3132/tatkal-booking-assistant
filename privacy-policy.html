@@ -25,7 +25,7 @@
 <body>
 <main>
   <h1>Privacy Policy</h1>
-  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 21 November 2026</p>
+  <p class="meta">Tatkal Booking Assistant (Chrome extension) &middot; Last updated: 22 November 2026</p>
 
   <div class="card">
     <p><b>In short:</b> booking details are kept on your device and filled into IRCTC. Anonymous booking
@@ -107,9 +107,10 @@
   asks Chrome for updates. That request sends nothing about you or your bookings; only a version number comes back.
   If your version is older, Auto Pilot and Auto-start wait until you update, and a downloaded update is applied
   when no booking is running.</p>
-  <p>To suggest trains, when you pick both stations of a route the extension opens IRCTC's train search in a
-  background tab, searches that route once, notes the trains IRCTC shows, and closes the tab. This is the same
-  search you could make yourself; it is made without logging in and sends IRCTC only the two stations and a date.</p>
+  <p>To suggest trains, when you pick both stations of a route (or press Find trains) the extension uses an open, idle tab of IRCTC's new site (or opens one),
+  logs in with your saved User ID if needed (you type the CAPTCHA), searches that route once and notes the trains IRCTC
+  shows. A tab it opened for this is closed afterwards. This is the same search you could make yourself and sends IRCTC
+  only the two stations and a date.</p>
   <p>The details the extension fills into IRCTC's forms reach IRCTC exactly as if you had typed them yourself,
   as part of your own booking. How IRCTC handles them is covered by IRCTC's own privacy policy.</p>
 
@@ -121,11 +122,15 @@
     <tr><td><code>notifications</code></td><td>Showing those reminders. Switch them off in Settings.</td></tr>
     <tr><td><code>scripting</code></td><td>Loading the helper into an IRCTC tab that was already open before the extension started, and reading IRCTC's station list from such a tab.</td></tr>
     <tr><td><code>webRequest</code></td><td>Seeing only the HTTP status (for example 403 or 429) of IRCTC's own sign-in requests, to tell when IRCTC rejects a login. Request URLs, headers, bodies, passwords and cookies are not read or stored.</td></tr>
-    <tr><td><code>browsingData</code> (optional; Chrome asks for it only after you click "Allow it now", the cache switch or
-      "Clear IRCTC cache" in the popup)</td><td>Removing the files Chrome saved for <code>www.irctc.co.in</code> (its cache) each
-      time Auto Pilot or Auto-start starts, and when you press "Clear IRCTC cache", so IRCTC loads its newest pages. The switch
-      "Clear IRCTC cache when Auto Pilot starts" at the bottom of the popup is on by default and can be turned off. Only that
-      site's cache is removed; cookies, logins, history and other websites are not touched, and nothing is read or sent.</td></tr>
+    <tr><td><code>browsingData</code> (optional; Chrome asks for it only after you allow it in the popup or press
+      "Clear IRCTC cache")</td><td>Two uses, both on your own computer only:
+      (1) "Clear IRCTC cache" removes only the files Chrome saved for <code>www.irctc.co.in</code> (its cache); cookies,
+      logins and history are kept.
+      (2) "Auto-clear Chrome data on IRCTC request error" (switch in the popup, on by default once the permission is
+      allowed): when an IRCTC page shows "Unable to process your request", the extension deletes the last 24 hours of
+      Chrome browsing history, cookies, cache and download history for <b>all websites</b>, then reopens IRCTC to retry
+      the login. This can sign you out of other websites. Downloaded files and saved passwords are kept. Turn the switch
+      off to stop it. Nothing is read, kept or sent by either use.</td></tr>
     <tr><td>Access to <code>https://www.irctc.co.in/*</code></td><td>The only site the extension can read or act on.</td></tr>
   </table>
 
